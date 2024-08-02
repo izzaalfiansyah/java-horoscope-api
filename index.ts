@@ -7,9 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send({
-    hello: "World",
-  });
+  res.send("It's worked");
 });
 
 app.use("/arti-nama", cekArtiNama);

@@ -4,6 +4,7 @@ import cheerio from "cheerio";
 
 const router = express.Router();
 
+// mengambil data dari tabel cekartinama.com
 const getFromCekArtiNama = async (nama: string) => {
   const namaString = nama.toLowerCase().replace(/ /gi, "-");
 

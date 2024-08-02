@@ -54,6 +54,7 @@ const getFromPrimbon = async (nama: string) => {
   const listNama = nama.split(" ");
 
   let items: {
+    nama: string;
     arti: string;
     detail: string;
   }[] = [];
@@ -78,6 +79,7 @@ const getFromPrimbon = async (nama: string) => {
         .split("Nama:")[0];
 
       items.push({
+        nama: n,
         arti,
         detail,
       });
@@ -89,8 +91,8 @@ const getFromPrimbon = async (nama: string) => {
   return items;
 };
 
-router.get("/", async (req, res) => {
-  const nama: string | null = req.query["nama"] as string;
+router.post("/", async (req, res) => {
+  const nama: string | null = req.body.nama;
 
   if (!nama) {
     return res.status(400).send({

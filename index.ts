@@ -1,8 +1,10 @@
 import express from "express";
 import cekArtiNama from "./src/cekartinama";
+import cors from "cors";
 import primbon from "./src/primbon";
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 

@@ -139,6 +139,34 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
   };
 };
 
+const getKarakter = async (props: {
+  tanggal: number;
+  bulan: number;
+  tahun: number;
+}) => {
+  const body = { ...props, submit: 1 };
+  const response = await axios.post(
+    "https://www.primbon.com/sifat_karakter_tanggal_lahir.php",
+    body,
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+  );
+
+  const $ = cheerio.load(response.data);
+
+  const bodyHTML = $("#body").html().split("GARIS HIDUP ")[1];
+  const garis_hidup = bodyHTML.split("</b>")[0];
+  const detail = bodyHTML.split("<i>")[1].split("</i>")[0];
+
+  return {
+    garis_hidup,
+    detail,
+  };
+};
+
 router.post("/", async (req, res) => {
   const tanggalLahir = req.body.tanggal_lahir;
 
@@ -154,10 +182,16 @@ router.post("/", async (req, res) => {
     bln: dates.getMonth() + 1,
     thn: dates.getFullYear(),
   });
+  const karakter = await getKarakter({
+    tanggal: dates.getDate(),
+    bulan: dates.getMonth() + 1,
+    tahun: dates.getFullYear(),
+  });
 
   return res.send({
     success: true,
     primbon,
+    karakter,
   });
 });
 

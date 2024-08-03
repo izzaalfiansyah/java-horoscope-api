@@ -50,105 +50,75 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
 
   $("#body").each((i, el) => {
     sifat_weton = $(el)
-      .text()
+      .html()
       ?.split("Weton tersebut, adalah:")[1]
       .split(".\n")[0]
       .trim();
 
     sifat_wuku = $(el)
-      .text()
+      .html()
       ?.split("Wuku tersebut, adalah:")[1]
       .split("Daftar ini")[0]
       .trim();
 
     keadaan_umum = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("KEADAAN UMUM")[1]
       .split("KEADAAN ALAM SEMESTA")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     keadaan_alam_semesta = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("KEADAAN ALAM SEMESTA")[1]
       .split("KEADAAN FISIK")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     keadaan_fisik = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("KEADAAN FISIK")[1]
       .split("KEADAAN MASA KANAK-KANAK")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     keadaan_masa_kanak_kanak = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("KEADAAN MASA KANAK-KANAK")[1]
       .split("KEADAAN MASA REMAJA")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     keadaan_masa_remaja = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("KEADAAN MASA REMAJA")[1]
       .split("CIRI KHAS")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     ciri_khas = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("CIRI KHAS")[1]
       .split("IKATAN PERSAHABATAN")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     ikatan_persahabatan = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("IKATAN PERSAHABATAN")[1]
       .split("KEADAAN KESEHATAN")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     keadaan_kesehatan = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("KEADAAN KESEHATAN")[1]
       .split("PEKERJAAN YANG COCOK")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     saat_yang_tepat = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("SAAT YANG TEPAT")[1]
       .split("HOBI")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
 
     jodoh = $(el)
       .html()
-      ?.split("Mongso tersebut, adalah:")[1]
       .split("JODOH")[1]
       .split("BATU PERMATA YANG COCOK")[0]
-      .replace(/(<([^>]+)>)/gi, "")
-      .replace(/\n/gi, "")
       .trim();
   });
 

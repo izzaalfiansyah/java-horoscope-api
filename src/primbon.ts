@@ -182,7 +182,7 @@ router.post("/", async (req, res) => {
     bln: dates.getMonth() + 1,
     thn: dates.getFullYear(),
   });
-  const karakter = await getKarakter({
+  const garis_hidup = await getKarakter({
     tanggal: dates.getDate(),
     bulan: dates.getMonth() + 1,
     tahun: dates.getFullYear(),
@@ -191,7 +191,7 @@ router.post("/", async (req, res) => {
   return res.send({
     success: true,
     primbon,
-    karakter,
+    garis_hidup,
   });
 });
 

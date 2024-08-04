@@ -72,9 +72,10 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
       .trim();
 
     keadaan_alam_semesta =
-      $(el)
-        .html()
-        ?.split("ALAM SEMESTA")[1]
+      (
+        $(el).html()?.split("ALAM SEMESTA")[1] ||
+        $(el).html()?.split("KEADAAN ALAM")[1]
+      )
         ?.split("KEADAAN FISIK")[0]
         .split("POSTUR TUBUH")[0]
         .trim() || "<br/>Tidak diketahui";

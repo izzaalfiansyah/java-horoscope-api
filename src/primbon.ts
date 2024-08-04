@@ -67,6 +67,7 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
       .split("KEADAAN UMUM")[1]
       ?.split("KEADAAN ALAM SEMESTA")[0]
       .split("ALAM SEMESTA")[0]
+      .split("KEADAAN ALAM")[0]
       .split("KEADAAN FISIK")[0]
       .trim();
 
@@ -76,7 +77,7 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
         ?.split("ALAM SEMESTA")[1]
         ?.split("KEADAAN FISIK")[0]
         .split("POSTUR TUBUH")[0]
-        .trim() || "<\br>Tidak diketahui";
+        .trim() || "<br/>Tidak diketahui";
 
     keadaan_fisik = (
       $(el).html()?.split("KEADAAN FISIK")[1] ||
@@ -116,7 +117,7 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
         .html()
         ?.split("KEADAAN KESEHATAN")[1]
         ?.split("PEKERJAAN YANG COCOK")[0]
-        .trim() || "</br>Tidak diketahui";
+        .trim() || "<br/>Tidak diketahui";
 
     saat_yang_tepat = (
       $(el).html()?.split("SAAT YANG TEPAT")[1] ||

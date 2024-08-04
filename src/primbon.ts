@@ -52,7 +52,7 @@ const getPrimbon = async (props: { tgl: number; bln: number; thn: number }) => {
     sifat_weton = $(el)
       .html()
       ?.split("Weton tersebut, adalah:")[1]
-      .split(".\n")[0]
+      .split("2.")[0]
       .trim();
 
     sifat_wuku = $(el)

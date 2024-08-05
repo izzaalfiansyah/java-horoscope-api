@@ -1,5 +1,6 @@
 import express from "express";
 import cekArtiNama from "./src/cekartinama";
+import jodoh from "./src/jodoh";
 import cors from "cors";
 import primbon from "./src/primbon";
 
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 
 app.use("/arti-nama", cekArtiNama);
 app.use("/primbon", primbon);
+app.use("/jodoh", jodoh);
 
 app.listen(8080, () => {
   console.log("Server berjalan di port 8080");

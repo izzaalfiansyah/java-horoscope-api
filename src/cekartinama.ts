@@ -8,44 +8,48 @@ const router = express.Router();
 const getFromCekArtiNama = async (nama: string) => {
   const namaString = nama.toLowerCase().replace(/ /gi, "-");
 
-  const response = await axios(
-    `https://cekartinama.com/cari-arti-nama/${namaString}.html`
-  );
-  const $ = cheerio.load(response.data);
   let items: any[] = [];
+  try {
+    const response = await axios(
+      `https://cekartinama.com/cari-arti-nama/${namaString}.html`
+    );
+    const $ = cheerio.load(response.data);
 
-  $(".table_wrap.table_ind > table.elements_table tbody tr").each(
-    (i, parent) => {
-      if (i > 0) {
-        let th: {
-          nama?: string;
-          gender?: string;
-          asal?: string;
-          arti?: string;
-        } = {};
-        $(parent)
-          .children()
-          .each((j, children) => {
-            if (j == 1) {
-              th.nama = $(children).text();
-            }
-            if (j == 2) {
-              th.gender = $(children).text();
-            }
-            if (j == 3) {
-              th.asal = $(children).text();
-            }
-            if (j == 4) {
-              th.arti = $(children).text();
-            }
-          });
+    $(".table_wrap.table_ind > table.elements_table tbody tr").each(
+      (i, parent) => {
+        if (i > 0) {
+          let th: {
+            nama?: string;
+            gender?: string;
+            asal?: string;
+            arti?: string;
+          } = {};
+          $(parent)
+            .children()
+            .each((j, children) => {
+              if (j == 1) {
+                th.nama = $(children).text();
+              }
+              if (j == 2) {
+                th.gender = $(children).text();
+              }
+              if (j == 3) {
+                th.asal = $(children).text();
+              }
+              if (j == 4) {
+                th.arti = $(children).text();
+              }
+            });
 
-        if (!!th.nama) {
-          items.push(th);
+          if (!!th.nama) {
+            items.push(th);
+          }
         }
       }
-    }
-  );
+    );
+  } catch (e) {
+    items = [];
+  }
 
   return items;
 };

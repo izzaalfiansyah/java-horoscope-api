@@ -156,7 +156,8 @@ const getRamalan = async (props: {
     body.split('src="ramalan_kecocokan_cinta')[1].split(".png")[0] || "0"
   );
   const nilai_detail = `${nilai}/5`;
-  const sisi_detail = body.slice(body.indexOf("Anda akan")).split("<table")[0];
+  console.log(body);
+  const sisi_detail = body.split('.png"><br><br>')[1].split("<table")[0];
 
   return {
     sisi_positif,

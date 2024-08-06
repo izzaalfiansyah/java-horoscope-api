@@ -10,8 +10,11 @@ const getFromCekArtiNama = async (nama: string) => {
 
   let items: any[] = [];
   try {
-    const response = await axios(
-      `https://cekartinama.com/cari-arti-nama/${namaString}.html`
+    const response = await axios.get(
+      `https://cekartinama.com/cari-arti-nama/${namaString}.html`,
+      {
+        timeout: 10000,
+      }
     );
     const $ = cheerio.load(response.data);
 

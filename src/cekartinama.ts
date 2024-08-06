@@ -13,7 +13,7 @@ const getFromCekArtiNama = async (nama: string) => {
     const response = await axios.get(
       `https://cekartinama.com/cari-arti-nama/${namaString}.html`,
       {
-        timeout: 10000,
+        timeout: 8000,
       }
     );
     const $ = cheerio.load(response.data);

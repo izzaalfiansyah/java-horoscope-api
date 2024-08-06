@@ -143,7 +143,7 @@ const getRamalan = async (props: {
   const $ = cheerio.load(response.data);
 
   const body = $("#body").html();
-  const text = $("body").text();
+
   const sisi_positif = body
     .split("Sisi Positif Anda:")[1]
     .split("<br>")[0]
@@ -156,10 +156,12 @@ const getRamalan = async (props: {
     body.split('src="ramalan_kecocokan_cinta')[1].split(".png")[0] || "0"
   );
   const nilai_detail = `${nilai}/5`;
+  const sisi_detail = body.slice(body.indexOf("Anda akan")).split("<table")[0];
 
   return {
     sisi_positif,
     sisi_negatif,
+    sisi_detail,
     nilai,
     nilai_detail,
   };
